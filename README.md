@@ -83,3 +83,5 @@ Noted in the [Clean Architecture Course](https://resocoder.com/2019/08/27/flutte
 1. [E-Invoice QR Code Reader](https://github.com/Mezo0099/e_invoice_qrcode_reader)
 2. [Mezo Movies](https://github.com/Mezo0099/mezo_movies) (in production)
 
+> Note: This architecture should work with any object-oriented Language not just dart i just happened to have an implementation in dart so Please feel free to share with me an Implementation in other languages that should be interesting
+
