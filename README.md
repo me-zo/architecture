@@ -24,11 +24,12 @@ Now these two architectures are similar in one aspect which is that they both ai
 |   |   ├── dependency_registrar
 |   |   |   ├── feature_dependencies
 |   |   |   └── dependencies.dart
-|   |   ├── failures
-|   |   |   ├── failures.dart
-|   |   |   └── failure_handler.dart
+|   |   ├── errors
+|   |   |   ├── errors.dart
+|   |   |   └── error_handler.dart
 |   |   ├── fixtures
 |   |   ├── helpers
+|   |   ├── cache
 |   |   └── network
 |   ├── data 
 |   |   ├── entities    --> models to communicate with databases grouped by relevance
@@ -78,16 +79,17 @@ This is the outmost layer in the application it is a combination of the domain a
 ### Feature Based Development
 Noted in the [Clean Architecture Course](https://resocoder.com/2019/08/27/flutter-tdd-clean-architecture-course-1-explanation-project-structure/) Provided By [Reso Coder](https://resocoder.com/) feature based development allows us to have an application that is **Open To Expansion**. What do I mean by this ? Well as an application grows the development pace usually slows down due to the complication increase in the code so the solution we came up with was to seperate related parts of the application together in features giving us more flexiblity so that we can add more features without having to warry about references and other complication in other words following the [**Open-Closed Principle**](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle) this leads us to a Stable Productivity as denoted by Uncle Bob in [Lesson 3 of Clean Code](https://youtu.be/Qjywrq2gM8o?t=1552)
 
-### Why Develop This Architecture ?
+### Why Develop This ["ResoOnion"](https://www.youtube.com/watch?v=dQw4w9WgXcQ) :) Architecture ?
 As you may have noticed I kept refering to a few resources that i believe are trying to achieve the same goal as I do.
-- From my experience (developing a 10+ feature app) the [Clean Architecture Course](https://resocoder.com/2019/08/27/flutter-tdd-clean-architecture-course-1-explanation-project-structure/) have proved to be quiet slow and incomplete for few reasons:
+- From my experience (developing apps containing 10+ features) the [Clean Architecture Course](https://resocoder.com/2019/08/27/flutter-tdd-clean-architecture-course-1-explanation-project-structure/) have proved to be quiet slow and incomplete for few reasons:
 1. every feature has all three layers and this nigates the [DRY (Don't Repeat yourself)](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) principle. Lets say we have two features calling the same data source but process the data differently this way you would either have to make one feature depend on another or duplicate the code in the data source which made lifting the Data Layer up more reasonable.
 2. every time you want to process an input or view an output you have to create a use case class and use its call method only this might not sound like a big deal but trust me it becomes a nightmare pretty quickly so it made sense to replace it by directly calling the service associated with the feature.
 3. entities were replaced by models to avoid confusion when dealing with databases and models where replaced by DTOs(for data connecting with APIs) and Entities(for data connecting with Databases), plus other changes that just made sense.
+- However [nopcommerce's Onion Architecture](https://docs.nopcommerce.com/en/developer/tutorials/architecture-of-nopCommerce.html) proved to be a very good example of how an Onion/Hexagonal Architecture should be implemented. 
 
 ### Samples
-1. [E-Invoice QR Code Reader](https://github.com/Mezo0099/e_invoice_qrcode_reader)
-2. [Mezo Movies](https://github.com/Mezo0099/mezo_movies) (in production)
+1. [E-Invoice QR Code Reader](https://github.com/Mezo0099/e_invoice_qrcode_reader) (Works Locally with Local Database)
+2. [Movies Flutter App](https://github.com/Mezo0099/movies_app) (Connects to the Internet with an API )
 
 > Note: This architecture should work with any object-oriented Language not just dart i just happened to have an implementation in dart so Please feel free to share with me an Implementation in other languages that should be interesting
 
